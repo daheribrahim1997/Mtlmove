@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réservation de Déménagement</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #e6f0ff, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 500px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      margin: 20px;
+      text-align: center;
+    }
+    h2 {
+      background-color: #007BFF;
+      color: white;
+      padding: 15px;
+      border-radius: 8px 8px 0 0;
+      margin: -30px -30px 20px -30px;
+      font-size: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: left;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .merci-message {
+      display: none;
+      background-color: #d4edda;
+      color: #155724;
+      padding: 20px;
+      margin-top: 20px;
+      border: 1px solid #c3e6cb;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .logo {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo_demenagement.png" alt="Déménagement Montréal" class="logo">
+    <h2>Réserver un déménagement</h2>
+    <form id="reservation-form" action="https://formsubmit.co/ajax/daher.ibrahim@yahoo.com" method="POST">
+      <input type="text" name="_honey" style="display:none">
+      <input type="hidden" name="_captcha" value="false">
+
+      <label for="nom">Nom complet</label>
+      <input type="text" id="nom" name="nom" required>
+
+      <label for="tel">Numéro de téléphone</label>
+      <input type="tel" id="tel" name="tel" required>
+
+      <label for="email">Adresse courriel</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="date">Date du déménagement</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="adresse_depart">Adresse de départ</label>
+      <input type="text" id="adresse_depart" name="adresse_depart" required>
+
+      <label for="adresse_arrivee">Adresse d'arrivée</label>
+      <input type="text" id="adresse_arrivee" name="adresse_arrivee" required>
+
+      <label for="type">Type de logement</label>
+      <select id="type" name="type" required>
+        <option value="appartement">Appartement</option>
+        <option value="maison">Maison</option>
+        <option value="bureau">Bureau</option>
+        <option value="autre">Autre</option>
+      </select>
+
+      <label for="etages">Nombre d'étages à déménager</label>
+      <select id="etages" name="etages">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="plus">3+</option>
+      </select>
+
+      <label for="ascenseur">Ascenseur ou escalier ?</label>
+      <select id="ascenseur" name="ascenseur" required>
+        <option value="ascenseur_disponible">Ascenseur disponible</option>
+        <option value="escalier_seulement">Escalier seulement</option>
+        <option value="les_deux">Les deux</option>
+        <option value="je_ne_sais_pas">Je ne sais pas</option>
+      </select>
+
+      <label for="details">Détails ou demandes spéciales</label>
+      <textarea id="details" name="details" rows="4"></textarea>
+
+      <button type="submit">Réserver</button>
+    </form>
+
+    <div class="merci-message" id="merci-message">
+      <h3>Merci!</h3>
+      <p>Votre réservation a bien été envoyée. Nous vous contacterons très bientôt.</p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('reservation-form');
+    const merciMessage = document.getElementById('merci-message');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          form.style.display = 'none';
+          merciMessage.style.display = 'block';
+        } else {
+          alert('Une erreur est survenue. Veuillez réessayer.');
+        }
+      }).catch(error => {
+        alert('Une erreur est survenue. Veuillez réessayer.');
+      });
+    });
+  </script>
+</body>
+</html>
