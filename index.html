@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Réservation de Déménagement</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -73,37 +72,38 @@
       text-align: center;
     }
     .logo {
-      max-width: 100%;
+      width: 400px;
       height: auto;
-      margin-bottom: 20px;
+      display: block;
+      margin: 40px auto 20px auto;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="logo_demenagement.png" alt="Déménagement Montréal" class="logo">
+    <img src="logo_demenagement.png" alt="Déménagement Montréal" class="logo" />
     <h2>Réserver un déménagement</h2>
     <form id="reservation-form" action="https://formsubmit.co/ajax/daher.ibrahim@yahoo.com" method="POST">
-      <input type="text" name="_honey" style="display:none">
-      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" />
+      <input type="hidden" name="_captcha" value="false" />
 
       <label for="nom">Nom complet</label>
-      <input type="text" id="nom" name="nom" required>
+      <input type="text" id="nom" name="nom" required />
 
       <label for="tel">Numéro de téléphone</label>
-      <input type="tel" id="tel" name="tel" required>
+      <input type="tel" id="tel" name="tel" required />
 
       <label for="email">Adresse courriel</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="email" required />
 
       <label for="date">Date du déménagement</label>
-      <input type="date" id="date" name="date" required>
+      <input type="date" id="date" name="date" required />
 
       <label for="adresse_depart">Adresse de départ</label>
-      <input type="text" id="adresse_depart" name="adresse_depart" required>
+      <input type="text" id="adresse_depart" name="adresse_depart" required />
 
       <label for="adresse_arrivee">Adresse d'arrivée</label>
-      <input type="text" id="adresse_arrivee" name="adresse_arrivee" required>
+      <input type="text" id="adresse_arrivee" name="adresse_arrivee" required />
 
       <label for="type">Type de logement</label>
       <select id="type" name="type" required>
